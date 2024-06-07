@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { DebounceInput } from "react-debounce-input";
 
 function App() {
   const [searchList, setSearchList] = useState([]);
@@ -30,7 +31,10 @@ function App() {
     <div className="App">
       <h1>Find A Book</h1>
       <label htmlFor="search-text"></label>
-      <input
+      <DebounceInput
+        minLength={2}
+        debounceTimeout={500}
+        input
         id="search-text"
         type="text"
         value={searchText}
