@@ -9,11 +9,15 @@ function App() {
 
   const getSearchList = async (seachText) => {
     try {
-      const result = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${seachText}`
-      );
-      console.log(result);
-      setSearchList(result.data.items);
+      if (seachText == "") {
+        setSearchList([]);
+      } else {
+        const result = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes?q=${seachText}`
+        );
+        console.log(result);
+        setSearchList(result.data.items);
+      }
     } catch (error) {
       console.log(error);
     }
