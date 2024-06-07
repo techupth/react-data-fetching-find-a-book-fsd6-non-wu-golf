@@ -46,8 +46,10 @@ function App() {
       />
       <div className="book-list">
         <ul>
-          {searchList.map((item) => (
-            <li>{item.volumeInfo.title}</li>
+          {searchList.map((item, index) => (
+            <li className="book-title" key={index}>
+              {item.volumeInfo.title}
+            </li>
           ))}
         </ul>
       </div>
